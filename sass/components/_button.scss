@@ -1,0 +1,106 @@
+.btn {
+  word-spacing: 0.1rem;
+  &,
+  &:link,
+  &:visited {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    font-size: $default-font-size;
+    transition: all 0.2s;
+    /* transition property always have to put at the initial stage of any element */
+
+    //= change for <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s; /* last value is delay */
+    animation-fill-mode: backwards;
+    /* fill-mode:backwards makes button invisible at 0% animaiton stage */
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    /*? box-shadow: X Y blur color */
+
+    &::after {
+      /* ?that means when we hover the button we want some effects for the ::after pseudo element, we style above */
+      /* in this case the initial state is after pseudo element */
+
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none; // change for <button> element
+    transform: translateY(-0.1rem);
+    /* this is related t0 the initial state. not visited state */
+    box-shadow: 0 1rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color_primary;
+    }
+  }
+
+  /* //= ::after pseudo creates an element just after the element. */
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    transition: all 0.4s;
+  }
+
+  &-text {
+    &:link,
+    &:visited {
+      font-size: $default-font-size;
+      color: $color-primary;
+      text-decoration: none;
+      display: inline-block;
+      border-bottom: 1px solid $color-primary;
+      padding: 3px;
+      transition: all 0.2s;
+    }
+
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+      transform: translateY(-0.3rem);
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+  }
+}
